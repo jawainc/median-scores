@@ -5,6 +5,7 @@ The technology stack: `Elixir`, `Phoenix framework`, `Liveviews` and `PostgreSQL
 ## Features
   * User can search school to view available data
   * User can view available median scores for selected school
+  * App comes with two themes. Dark🌙 and Light☀️, these will be set based on system theme preferences
 
 ## Elixir & Postgres Requirements
 
