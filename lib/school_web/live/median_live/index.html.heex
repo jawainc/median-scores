@@ -1,0 +1,37 @@
+<.header>
+  Law School First Year Class
+</.header>
+
+<.search_input />
+
+<.table 
+  id="schools" 
+  rows={@schools} 
+  row_click={fn school -> JS.push("show-school", value: %{id: school.id}) end}
+  >
+  <:col :let={school} label="School Name">
+    <%= school.school %>
+  </:col>
+  <:col :let={school} label="Rank">
+    <%= school.rank %>
+  </:col>
+  <:col :let={school} label="Year">
+    <%= school.first_year_class %>
+  </:col>
+  <:action :let={school}>
+    <span class="cursor-pointer hover:text-primary-500" phx-click={JS.push("show-school", value: %{id: school.id})}>
+      view scores
+    </span>
+  </:action>
+</.table>
+
+<.table_paging current_page={@page} total_pages={@total_pages} />
+
+
+<.modal :if={@show_school} id="school-modal" show on_cancel={JS.push("hide-school")}>
+  <:title>
+    <%= @school.school %>
+  </:title>
+  <.live_component module={SchoolWeb.MedianLive.ShowComponent} id={@school.id} title={@page_title} action={@live_action}
+    school={@school} />
+</.modal>
